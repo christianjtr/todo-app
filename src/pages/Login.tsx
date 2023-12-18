@@ -23,7 +23,9 @@ const Login: React.FC = (): React.ReactElement => {
                                         alt="Logo"
                                         className="is-align-self-center m-2"
                                     />
-                                    <span>My TODO App</span>
+                                    <span className="is-size-5">
+                                        My TODO App
+                                    </span>
                                 </div>
                                 <div className="field">
                                     <div className="control has-icons-left">
@@ -60,7 +62,7 @@ const Login: React.FC = (): React.ReactElement => {
                                         className="button is-transparent"
                                         onClick={handleOnLogin}
                                     >
-                                        Login
+                                        Log in
                                     </button>
                                 </div>
                             </form>
