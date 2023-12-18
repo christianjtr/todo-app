@@ -1,14 +1,18 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import BrandLogo from "../../assets/todo-brand-logo.png";
-import UserImg from "../../assets/user.png";
-
 interface HeaderProps {
     className?: string;
 }
 
 const Header: React.FC<HeaderProps> = (props): React.ReactElement => {
     const { className = undefined } = props;
+
+    const history = useHistory();
+
+    const handleOnLogOut = (): void => {
+        history.push("/login");
+    };
 
     return (
         <header className={className}>
@@ -20,19 +24,23 @@ const Header: React.FC<HeaderProps> = (props): React.ReactElement => {
                 <div className="navbar-brand">
                     <Link to="/home" className="navbar-item">
                         <img src={BrandLogo} alt="Logo" />
-                        <span className="mx-2 has-text-weight-bold is-size-5">
-                            My TODO App
-                        </span>
+                        <span className="mx-2">My TODO App</span>
                     </Link>
                 </div>
                 <div className="navbar-end">
                     <div className="navbar-item has-dropdown is-hoverable is-boxed">
                         <a className="navbar-link is-arrowless">
-                            <img src={UserImg} alt="Logo" />
-                            <span className="mx-2">Profile</span>
+                            <i className="fa fa-user" aria-hidden="true"></i>
+                            <span className="mx-2">--User--</span>
                         </a>
                         <div className="navbar-dropdown is-right">
-                            <a className="navbar-item">Log out</a>
+                            <a
+                                className="navbar-item"
+                                role="button"
+                                onClick={handleOnLogOut}
+                            >
+                                Log out
+                            </a>
                         </div>
                     </div>
                 </div>
