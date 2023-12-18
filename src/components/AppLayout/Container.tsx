@@ -7,7 +7,11 @@ interface ContainerProps {
 const Container: React.FC<ContainerProps> = (props): React.ReactElement => {
     const { className = undefined } = props;
 
-    return <section className={className}>--- CONTAINER ---</section>;
+    return (
+        <section className={className}>
+            <div className="section">--- CONTAINER ---</div>
+        </section>
+    );
 };
 
 export default Container;
