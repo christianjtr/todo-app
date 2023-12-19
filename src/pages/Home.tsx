@@ -1,5 +1,5 @@
 import React from "react";
-import { Header, Container, Footer } from "../components/AppLayout";
+import { Header, Container } from "../components/AppLayout";
 import Todo from "./Todo/Todo";
 
 const Home: React.FC = (): React.ReactElement => {
@@ -9,7 +9,6 @@ const Home: React.FC = (): React.ReactElement => {
             <Container className="hero is-fullheight">
                 <Todo />
             </Container>
-            <Footer className="footer" />
         </>
     );
 };
