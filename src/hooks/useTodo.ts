@@ -5,6 +5,7 @@ import { Task } from "../types/Task";
 
 interface useTodoInterface {
     tasks: Task[];
+    totalTasksDone: number;
     addTask: (description: string) => void;
     checkTask: (taskId: number, isDone: boolean) => void;
     editTask: (taskId: number, description: string) => void;
@@ -41,6 +42,7 @@ const useTodo = (): useTodoInterface => {
 
     return {
         tasks: state.tasks || [],
+        totalTasksDone: state.tasks.filter(({isDone}) => isDone).length,
         addTask,
         checkTask,
         editTask,

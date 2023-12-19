@@ -4,7 +4,7 @@ import useTodo from "../../../hooks/useTodo.ts";
 import NotFoundStateImage from "../../../assets/not-found.jpg";
 
 const TodoList: React.FC = (): React.ReactElement => {
-    const { tasks } = useTodo();
+    const { tasks, totalTasksDone } = useTodo();
 
     const fallbackImage = (
         <img
@@ -17,7 +17,10 @@ const TodoList: React.FC = (): React.ReactElement => {
 
     return (
         <>
-            <h3 className="has-text-left is-size-5 mb-3">TODO's</h3>
+            <div className="is-flex is-justify-content-space-between">
+                <h3 className="has-text-left is-size-5 mb-3">TODO's</h3>
+                <span className="tag">{`Done: ${totalTasksDone}`}</span>
+            </div>
             <div className="box">
                 {tasks.length === 0
                     ? fallbackImage
