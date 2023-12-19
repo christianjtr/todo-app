@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import EditTaskForm from "./EditTaskForm.tsx";
 import { Task } from "../../../types/Task";
 import useTodo from "../../../hooks/useTodo.ts";
 
@@ -9,6 +10,7 @@ interface TaskItemInterface {
 const TaskItem: React.FC<TaskItemInterface> = (props): React.ReactElement => {
     const { task } = props;
     const { checkTask, deleteTask } = useTodo();
+    const [isEditMode, setIsEditMode] = useState<boolean>(false);
 
     const handleOnChange = (
         event: React.ChangeEvent<HTMLInputElement>
@@ -16,60 +18,75 @@ const TaskItem: React.FC<TaskItemInterface> = (props): React.ReactElement => {
         checkTask(task.id, (event.target as HTMLInputElement).checked);
     };
 
-    const handleOnDeleteTask = (taskId: number): void => {
-        deleteTask(taskId);
+    const handleOnEditTask = (): void => {
+        setIsEditMode(!isEditMode);
+    };
+
+    const handleOnDeleteTask = (): void => {
+        deleteTask(task.id);
     };
 
     return (
-        <div className="level has-background-white p-3 mb-3">
-            <div className="level-left is-flex is-flex-direction-column is-align-items-flex-start">
-                <div className="level-item mb-1">
-                    <label className="checkbox">
-                        <input
-                            type="checkbox"
-                            id="checkTask"
-                            name="checkTask"
-                            className="mr-2"
-                            aria-label="Check task"
-                            title="Check task"
-                            checked={task.isDone}
-                            onChange={handleOnChange}
-                        />
-                        {task.description}
-                    </label>
+        <div className="has-background-white-ter p-3 my-2">
+            <div className="level">
+                <div className="level-left is-flex is-flex-direction-column is-align-items-flex-start">
+                    <div className="level-item mb-1 has-text-left">
+                        <label className="checkbox is-unselectable">
+                            <input
+                                type="checkbox"
+                                id="checkTask"
+                                name="checkTask"
+                                className="mr-2"
+                                aria-label="Check task"
+                                title="Check task"
+                                checked={task.isDone}
+                                onChange={handleOnChange}
+                            />
+                            {task.description}
+                        </label>
+                    </div>
+                    <div className="level-item is-size-7 has-text-grey-light is-unselectable">
+                        <i className="fa fa-calendar" aria-hidden="true" />
+                        <span className="mx-2">{task.date.toUTCString()}</span>
+                    </div>
                 </div>
-                <div className="level-item is-size-7 has-text-grey-light">
-                    <i className="fa fa-calendar" aria-hidden="true" />
-                    <span className="mx-2">{task.date.toUTCString()}</span>
+                <div className="level-right">
+                    <div className="buttons">
+                        <button
+                            id="editTaskBtn"
+                            name="editTaskBtn"
+                            aria-label="Edit task"
+                            title="Edit"
+                            className={`button is-small ${
+                                isEditMode && "is-link"
+                            }`}
+                            onClick={handleOnEditTask}
+                        >
+                            <span className="icon is-small">
+                                <i className="fas fa-edit" aria-hidden="true" />
+                            </span>
+                        </button>
+                        <button
+                            id="deleteTaskBtn"
+                            name="deleteTaskBtn"
+                            aria-label="Delete task"
+                            title="Delete"
+                            className="button is-small"
+                            onClick={handleOnDeleteTask}
+                        >
+                            <span className="icon is-small">
+                                <i
+                                    className="fas fa-trash"
+                                    aria-hidden="true"
+                                />
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </div>
-            <div className="level-right">
-                <div className="buttons">
-                    <button
-                        id="editTaskBtn"
-                        name="editTaskBtn"
-                        aria-label="Edit task"
-                        title="Edit"
-                        className="button is-small"
-                    >
-                        <span className="icon is-small">
-                            <i className="fas fa-edit" aria-hidden="true" />
-                        </span>
-                    </button>
-                    <button
-                        id="deleteTaskBtn"
-                        name="deleteTaskBtn"
-                        aria-label="Delete task"
-                        title="Delete"
-                        className="button is-small"
-                        onClick={() => handleOnDeleteTask(task.id)}
-                    >
-                        <span className="icon is-small">
-                            <i className="fas fa-trash" aria-hidden="true" />
-                        </span>
-                    </button>
-                </div>
-            </div>
+            {isEditMode && (
+                <EditTaskForm formData={task} onEditTask={handleOnEditTask} />
+            )}
         </div>
     );
 };

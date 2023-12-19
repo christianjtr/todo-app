@@ -35,6 +35,7 @@ const AddTaskForm: React.FC = (): React.ReactElement => {
                             aria-label="Enter task"
                             autoComplete="off"
                             minLength={3}
+                            maxLength={50}
                             required
                         />
                     </div>

@@ -20,7 +20,25 @@ const TodoActions = (state: TodoStateInterface, action: TodoActionTypes): TodoSt
       const matchTask = tasks.find(({ id }) => taskId === id)!;
       matchTask.isDone = isDone;
       
-      const taskCollection = tasks.map((task) => task.id === taskId && matchTask ? matchTask : task)
+      const taskCollection = tasks.map((task) => task.id === taskId && matchTask ? matchTask : task);
+
+      return {
+        ...state,
+        tasks: taskCollection
+      }
+    }
+    case TODO_ACTION_TYPES.EDIT_TASK: {
+      const { tasks } = state;
+      const { taskId, task } = action.payload;
+      
+      const matchTask = tasks.find(({ id }) => taskId === id)!;
+      const editedTask = {
+        ...matchTask,
+        description: task.description,
+        date: task.date,
+      };
+
+      const taskCollection = tasks.map((task) => task.id === taskId && editedTask ? editedTask : task);
 
       return {
         ...state,
