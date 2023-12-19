@@ -4,16 +4,16 @@ import { TodoContext, TodoContextType } from "../contexts/TodoContext/TodoContex
 import { Task } from "../types/Task";
 
 interface useTodoInterface {
-    addTask: (description: Task['description']) => void;
     tasks: Task[];
+    addTask: (description: string) => void;
+    checkTask: (taskId: number, isDone: boolean) => void;
 }
 
 const useTodo = (): useTodoInterface => {
 
     const { state, dispatch } = useContext(TodoContext) as TodoContextType;
 
-    const addTask = (description: Task['description']): void => {
-        
+    const addTask = (description: string): void => {
         dispatch({type: TODO_ACTION_TYPES.ADD_TASK, payload: { task: {
             id: Math.random(),
             description,
@@ -22,9 +22,14 @@ const useTodo = (): useTodoInterface => {
         }}})
     }
 
+    const checkTask = (taskId: number, isDone: boolean): void => {
+        dispatch({type: TODO_ACTION_TYPES.CHECK_TASK, payload: { taskId, isDone }});
+    }
+
     return {
-        addTask,
         tasks: state.tasks || [],
+        addTask,
+        checkTask
     }
 }
 

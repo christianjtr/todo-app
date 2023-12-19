@@ -13,6 +13,20 @@ const TodoActions = (state: TodoStateInterface, action: TodoActionTypes): TodoSt
             tasks: taskCollection,
         };
     }
+    case TODO_ACTION_TYPES.CHECK_TASK: {
+      const { tasks } = state;
+      const { taskId, isDone } = action.payload;
+      
+      const matchTask = tasks.find(({ id }) => taskId === id)!;
+      matchTask.isDone = isDone;
+      
+      const taskCollection = tasks.map((task) => task.id === taskId && matchTask ? matchTask : task)
+
+      return {
+        ...state,
+        tasks: taskCollection
+      }
+    }
     default: {
         throw new Error('Unhandled action type');
     }

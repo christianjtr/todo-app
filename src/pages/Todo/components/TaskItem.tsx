@@ -1,5 +1,6 @@
 import React from "react";
 import { Task } from "../../../types/Task";
+import useTodo from "../../../hooks/useTodo.ts";
 
 interface TaskItemInterface {
     task: Task;
@@ -7,6 +8,11 @@ interface TaskItemInterface {
 
 const TaskItem: React.FC<TaskItemInterface> = (props): React.ReactElement => {
     const { task } = props;
+    const { checkTask } = useTodo();
+
+    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        checkTask(task.id, (event.target as HTMLInputElement).checked);
+    };
 
     return (
         <div className="level has-background-white p-3 mb-3">
@@ -21,6 +27,7 @@ const TaskItem: React.FC<TaskItemInterface> = (props): React.ReactElement => {
                             aria-label="Check task"
                             title="Check task"
                             checked={task.isDone}
+                            onChange={handleOnChange}
                         />
                         {task.description}
                     </label>
