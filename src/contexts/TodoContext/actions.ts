@@ -27,6 +27,17 @@ const TodoActions = (state: TodoStateInterface, action: TodoActionTypes): TodoSt
         tasks: taskCollection
       }
     }
+    case TODO_ACTION_TYPES.DELETE_TASK: {
+      const { tasks } = state;
+      const { taskId } = action.payload;
+      
+      const taskCollection = tasks.filter((task) => task.id !== taskId);
+
+      return {
+        ...state,
+        tasks: taskCollection
+      }
+    }
     default: {
         throw new Error('Unhandled action type');
     }

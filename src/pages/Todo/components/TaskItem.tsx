@@ -8,10 +8,16 @@ interface TaskItemInterface {
 
 const TaskItem: React.FC<TaskItemInterface> = (props): React.ReactElement => {
     const { task } = props;
-    const { checkTask } = useTodo();
+    const { checkTask, deleteTask } = useTodo();
 
-    const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const handleOnChange = (
+        event: React.ChangeEvent<HTMLInputElement>
+    ): void => {
         checkTask(task.id, (event.target as HTMLInputElement).checked);
+    };
+
+    const handleOnDeleteTask = (taskId: number): void => {
+        deleteTask(taskId);
     };
 
     return (
@@ -56,6 +62,7 @@ const TaskItem: React.FC<TaskItemInterface> = (props): React.ReactElement => {
                         aria-label="Delete task"
                         title="Delete"
                         className="button is-small"
+                        onClick={() => handleOnDeleteTask(task.id)}
                     >
                         <span className="icon is-small">
                             <i className="fas fa-trash" aria-hidden="true" />

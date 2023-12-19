@@ -7,6 +7,7 @@ interface useTodoInterface {
     tasks: Task[];
     addTask: (description: string) => void;
     checkTask: (taskId: number, isDone: boolean) => void;
+    deleteTask: (taskId: number) => void;
 }
 
 const useTodo = (): useTodoInterface => {
@@ -26,10 +27,15 @@ const useTodo = (): useTodoInterface => {
         dispatch({type: TODO_ACTION_TYPES.CHECK_TASK, payload: { taskId, isDone }});
     }
 
+    const deleteTask = (taskId: number): void => {
+        dispatch({type: TODO_ACTION_TYPES.DELETE_TASK, payload: { taskId }});
+    }
+
     return {
         tasks: state.tasks || [],
         addTask,
-        checkTask
+        checkTask,
+        deleteTask
     }
 }
 
