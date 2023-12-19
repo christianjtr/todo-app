@@ -1,6 +1,5 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-
 import BrandLogo from "../assets/todo-brand-logo.png";
 
 const Login: React.FC = (): React.ReactElement => {

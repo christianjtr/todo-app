@@ -22,25 +22,27 @@ const Header: React.FC<HeaderProps> = (props): React.ReactElement => {
                 aria-label="main navigation"
             >
                 <div className="navbar-brand">
-                    <Link to="/home" className="navbar-item">
-                        <img src={BrandLogo} alt="Logo" />
+                    <Link to="/home" className="navbar-item" title="Home">
+                        <img src={BrandLogo} alt="Brand logo" />
                         <span className="mx-2">My TODO App</span>
                     </Link>
                 </div>
-                <div className="navbar-end">
-                    <div className="navbar-item has-dropdown is-hoverable is-boxed">
-                        <a className="navbar-link is-arrowless">
-                            <i className="fa fa-user" aria-hidden="true"></i>
-                            <span className="mx-2">--User--</span>
-                        </a>
-                        <div className="navbar-dropdown is-right">
-                            <a
-                                className="navbar-item"
-                                role="button"
-                                onClick={handleOnLogOut}
-                            >
-                                Log out
+                <div className="navbar-menu">
+                    <div className="navbar-end">
+                        <div className="navbar-item has-dropdown is-hoverable">
+                            <a className="navbar-link" role="button">
+                                <span className="mx-2">---User---</span>
                             </a>
+                            <div className="navbar-dropdown is-right is-boxed">
+                                <a
+                                    className="navbar-item"
+                                    role="button"
+                                    title="Log out"
+                                    onClick={handleOnLogOut}
+                                >
+                                    Log out
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
