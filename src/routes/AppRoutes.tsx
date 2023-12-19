@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch, Redirect, useRouteMatch } from "react-router-dom";
-import { Home, Login } from "../pages";
+import { Home, Login, NotFound } from "../pages";
 
 const AppRoutes: React.FC = (): React.ReactElement => {
     const { path } = useRouteMatch();
@@ -10,7 +10,7 @@ const AppRoutes: React.FC = (): React.ReactElement => {
             <Redirect exact from={path} to="/login" />
             <Route path="/login" component={Login} />
             <Route path="/home" component={Home} />
-            <Route path="*" />
+            <Route path="*" component={NotFound} />
         </Switch>
     );
 };
