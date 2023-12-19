@@ -1,16 +1,17 @@
 import React from "react";
 import { AddTaskForm, TodoList } from "./components";
+import { TodoProvider } from "../../contexts/TodoContext/TodoProvider";
 
 const Todo: React.FC = (): React.ReactElement => {
-    const tasks = [1, 2, 3];
-
     return (
-        <div className="columns is-centered">
-            <div className="column is-7-widescreen">
-                <AddTaskForm />
-                <TodoList tasks={tasks} />
+        <TodoProvider>
+            <div className="columns is-centered">
+                <div className="column is-7-widescreen">
+                    <AddTaskForm />
+                    <TodoList tasks={[]} />
+                </div>
             </div>
-        </div>
+        </TodoProvider>
     );
 };
 

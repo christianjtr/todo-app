@@ -1,8 +1,9 @@
 import React from "react";
+import { Task } from "../../../types/Task";
 import TaskItem from "./TaskItem";
 
 interface TodoListProps {
-    tasks: unknown[];
+    tasks: Task[];
 }
 
 const TodoList: React.FC<TodoListProps> = (props): React.ReactElement => {
