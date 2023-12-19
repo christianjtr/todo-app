@@ -8,7 +8,7 @@ const Todo: React.FC = (): React.ReactElement => {
             <div className="columns is-centered">
                 <div className="column is-7-widescreen">
                     <AddTaskForm />
-                    <TodoList tasks={[]} />
+                    <TodoList />
                 </div>
             </div>
         </TodoProvider>

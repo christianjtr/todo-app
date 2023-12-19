@@ -1,20 +1,16 @@
 import React from "react";
-import { Task } from "../../../types/Task";
 import TaskItem from "./TaskItem";
+import useTodo from "../../../hooks/useTodo.ts";
 
-interface TodoListProps {
-    tasks: Task[];
-}
-
-const TodoList: React.FC<TodoListProps> = (props): React.ReactElement => {
-    const { tasks = [] } = props;
+const TodoList: React.FC = (): React.ReactElement => {
+    const { tasks } = useTodo();
 
     return (
         <>
             <h3 className="has-text-left is-size-5 mb-3">TODO's</h3>
             <div className="box has-background-white-ter">
-                {tasks.map((task, index) => (
-                    <TaskItem key={index} />
+                {tasks.map((task) => (
+                    <TaskItem key={task.id} task={task} />
                 ))}
             </div>
         </>

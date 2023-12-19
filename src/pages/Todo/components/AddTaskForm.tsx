@@ -1,8 +1,25 @@
 import React from "react";
+import useTodo from "../../../hooks/useTodo.ts";
 
 const AddTaskForm: React.FC = (): React.ReactElement => {
+    const { addTask } = useTodo();
+
+    const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
+        event.preventDefault();
+        const formData = new FormData(event.target as HTMLFormElement);
+        const task = formData.get("task");
+        if (task && typeof task === "string") {
+            addTask(task);
+            resetForm();
+        }
+    };
+
+    const resetForm = (): void => {
+        (document.getElementById("addTaskForm") as HTMLFormElement)?.reset();
+    };
+
     return (
-        <form id="addTaskForm" name="addTaskForm">
+        <form id="addTaskForm" name="addTaskForm" onSubmit={handleOnSubmit}>
             <h3 className="has-text-left is-size-5 mb-3">
                 Add a new task here
             </h3>
@@ -16,6 +33,8 @@ const AddTaskForm: React.FC = (): React.ReactElement => {
                             className="input"
                             placeholder="Enter task"
                             aria-label="Enter task"
+                            autoComplete="off"
+                            minLength={3}
                             required
                         />
                     </div>
