@@ -9,13 +9,13 @@ interface TaskItemInterface {
 
 const TaskItem: React.FC<TaskItemInterface> = (props): React.ReactElement => {
     const { task } = props;
-    const { checkTask, deleteTask } = useTodo();
+    const { checkTaskById, deleteTaskById } = useTodo();
     const [isEditMode, setIsEditMode] = useState<boolean>(false);
 
     const handleOnChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ): void => {
-        checkTask(task.id, (event.target as HTMLInputElement).checked);
+        checkTaskById(task.id, (event.target as HTMLInputElement).checked);
     };
 
     const handleOnEditTask = (): void => {
@@ -23,7 +23,7 @@ const TaskItem: React.FC<TaskItemInterface> = (props): React.ReactElement => {
     };
 
     const handleOnDeleteTask = (): void => {
-        deleteTask(task.id);
+        deleteTaskById(task.id);
     };
 
     return (

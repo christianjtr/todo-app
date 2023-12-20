@@ -13,14 +13,14 @@ const EditTaskForm: React.FC<EditTaskProps> = (props): React.ReactElement => {
         onEditTask,
     } = props;
 
-    const { editTask } = useTodo();
+    const { editTaskById } = useTodo();
 
     const handleOnSubmit = (event: React.FormEvent<HTMLFormElement>): void => {
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
         const task = formData.get("task");
         if (task && typeof task === "string") {
-            editTask(id, task);
+            editTaskById(id, task);
             onEditTask();
         }
     };
