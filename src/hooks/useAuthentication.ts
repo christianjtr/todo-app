@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 import Cookies from 'js-cookie';
 import * as LoginServices from '../services/loginService';
+import * as TaskServices from '../services/taskService';
 interface useAuthenticationInterface {
     checkAuthToken: () => boolean;
     logIn: (credentials: LoginServices.LoginCredentials) => Promise<void>;
@@ -37,6 +38,7 @@ const useAuthentication = (): useAuthenticationInterface => {
         await LoginServices.logOut();
         
         if(checkAuthToken()) Cookies.remove('authToken');
+        TaskServices.deleteTasks();
         
         history.push("/login");
     }
