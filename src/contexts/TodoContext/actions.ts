@@ -13,6 +13,14 @@ const TodoActions = (state: TodoStateInterface, action: TodoActionTypes): TodoSt
             tasks: taskCollection,
         };
     }
+    case TODO_ACTION_TYPES.POPULATE_TASK_COLLECTION: {
+      const { tasks: newTaskCollection } = action.payload;
+      
+      return {
+          ...state,
+          tasks: newTaskCollection,
+      };
+    }
     case TODO_ACTION_TYPES.CHECK_TASK: {
       const { tasks } = state;
       const { taskId, isDone } = action.payload;

@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import * as TaskServices from '../services/taskService';
 import { TODO_ACTION_TYPES } from '../contexts/TodoContext/action-types';
 import { TodoContext, TodoContextType } from "../contexts/TodoContext/TodoContext";
@@ -16,6 +16,15 @@ interface useTodoInterface {
 const useTodo = (): useTodoInterface => {
 
     const { state: { tasks }, dispatch } = useContext(TodoContext) as TodoContextType;
+
+    useEffect(() => {
+        dispatch({ 
+            type: TODO_ACTION_TYPES.POPULATE_TASK_COLLECTION, 
+            payload: { 
+                tasks: TaskServices.getTasks(),
+            }
+        });
+    }, [dispatch]);
 
     const addTask = (description: string): void => {
         const task = {
