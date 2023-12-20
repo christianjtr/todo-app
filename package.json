@@ -12,7 +12,10 @@
         "build": "tsc && vite build",
         "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
         "preview": "vite preview",
-        "test": "jest"
+        "test": "jest --config ./jest.config.cjs",
+        "cy:open:e2e": "cypress open --e2e --browser chrome",
+        "cy:run:e2e": "cypress run --e2e",
+        "cy:e2e": "start-server-and-test dev http://localhost:3000 cy:open:e2e"
     },
     "dependencies": {
         "bulma": "^0.9.4",
@@ -40,6 +43,7 @@
         "babel-jest": "^29.7.0",
         "cypress": "^13.6.1",
         "eslint": "^8.55.0",
+        "eslint-plugin-cypress": "^2.15.1",
         "eslint-plugin-html": "^7.1.0",
         "eslint-plugin-react-hooks": "^4.6.0",
         "eslint-plugin-react-refresh": "^0.4.5",
@@ -47,6 +51,7 @@
         "jest-environment-jsdom": "^29.7.0",
         "jest-transform-stub": "^2.0.0",
         "react-test-renderer": "^18.2.0",
+        "start-server-and-test": "^2.0.3",
         "ts-jest": "^29.1.1",
         "ts-node": "^10.9.2",
         "typescript": "^5.2.2",
