@@ -44,6 +44,7 @@ const Login: React.FC = (): React.ReactElement => {
                                             placeholder="User"
                                             className="input"
                                             minLength={3}
+                                            data-cy="username"
                                         />
                                         <span className="icon is-small is-left">
                                             <i
@@ -63,6 +64,7 @@ const Login: React.FC = (): React.ReactElement => {
                                             className="input"
                                             minLength={8}
                                             maxLength={16}
+                                            data-cy="password"
                                         />
                                         <span className="icon is-small is-left">
                                             <i
@@ -79,6 +81,7 @@ const Login: React.FC = (): React.ReactElement => {
                                         type="submit"
                                         form="loginForm"
                                         className="button is-transparent"
+                                        data-cy="submitBtn"
                                     >
                                         Log in
                                     </button>
