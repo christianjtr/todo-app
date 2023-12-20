@@ -31,7 +31,7 @@ const Header: React.FC<HeaderProps> = (props): React.ReactElement => {
                     <div className="navbar-end">
                         <div className="navbar-item has-dropdown is-hoverable">
                             <a className="navbar-link" role="button">
-                                <span className="mx-2">---User---</span>
+                                <i className="fa fa-user-circle" />
                             </a>
                             <div className="navbar-dropdown is-right is-boxed">
                                 <a
