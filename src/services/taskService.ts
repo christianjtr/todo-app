@@ -14,7 +14,11 @@ const storeTasks = (tasks: Task[]): void => {
 
 const getTasks = (): Task[] => {
     if(checkTasks()) {
-        return JSON.parse(localStorage.getItem(TASK_STORAGE_KEYS.TASKS)!);
+        const tasks = JSON.parse(localStorage.getItem(TASK_STORAGE_KEYS.TASKS)!);
+        return tasks.map((task: Task) => ({
+            ...task,
+            date: new Date(task.date)
+        }));
     }
     return [];
 }
