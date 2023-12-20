@@ -1,12 +1,16 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import useAuthentication from "../hooks/useAuthentication";
 import BrandLogo from "../assets/todo-brand-logo.png";
 
 const Login: React.FC = (): React.ReactElement => {
-    const history = useHistory();
+    const { logIn } = useAuthentication();
 
-    const handleOnLogin = (): void => {
-        history.push("/home");
+    const handleOnLogin = (event: React.FormEvent<HTMLFormElement>): void => {
+        event.preventDefault();
+        const formData = new FormData(event.target as HTMLFormElement);
+        const username = formData.get("username") as string;
+        const password = formData.get("password") as string;
+        logIn({ username, password });
     };
 
     return (
@@ -15,7 +19,12 @@ const Login: React.FC = (): React.ReactElement => {
                 <div className="container">
                     <div className="columns is-centered">
                         <div className="column is-5-tablet is-4-desktop is-3-widescreen">
-                            <form action="" className="box">
+                            <form
+                                id="loginForm"
+                                name="loginForm"
+                                className="box"
+                                onSubmit={handleOnLogin}
+                            >
                                 <div className="is-flex is-flex-direction-column m-4">
                                     <img
                                         src={BrandLogo}
@@ -29,9 +38,12 @@ const Login: React.FC = (): React.ReactElement => {
                                 <div className="field">
                                     <div className="control has-icons-left">
                                         <input
+                                            id="username"
+                                            name="username"
                                             type="text"
                                             placeholder="User"
                                             className="input"
+                                            minLength={3}
                                         />
                                         <span className="icon is-small is-left">
                                             <i
@@ -44,9 +56,13 @@ const Login: React.FC = (): React.ReactElement => {
                                 <div className="field">
                                     <div className="control has-icons-left">
                                         <input
+                                            id="password"
+                                            name="password"
                                             type="password"
                                             placeholder="Password"
                                             className="input"
+                                            minLength={8}
+                                            maxLength={16}
                                         />
                                         <span className="icon is-small is-left">
                                             <i
@@ -58,8 +74,11 @@ const Login: React.FC = (): React.ReactElement => {
                                 </div>
                                 <div className="field">
                                     <button
+                                        id="submitBtn"
+                                        name="submitBtn"
+                                        type="submit"
+                                        form="loginForm"
                                         className="button is-transparent"
-                                        onClick={handleOnLogin}
                                     >
                                         Log in
                                     </button>

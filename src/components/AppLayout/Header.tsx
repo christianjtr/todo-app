@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
+import useAuthentication from "../../hooks/useAuthentication";
 import BrandLogo from "../../assets/todo-brand-logo.png";
 interface HeaderProps {
     className?: string;
@@ -7,11 +8,10 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = (props): React.ReactElement => {
     const { className = undefined } = props;
-
-    const history = useHistory();
+    const { logOut } = useAuthentication();
 
     const handleOnLogOut = (): void => {
-        history.push("/login");
+        logOut();
     };
 
     return (
@@ -35,6 +35,7 @@ const Header: React.FC<HeaderProps> = (props): React.ReactElement => {
                             </a>
                             <div className="navbar-dropdown is-right is-boxed">
                                 <a
+                                    id="logOutLink"
                                     className="navbar-item"
                                     role="button"
                                     title="Log out"
