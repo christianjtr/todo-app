@@ -44,6 +44,8 @@ git clone https://github.com/christianjtr/todo-app.git
 ```
 ### Demo
 
+<video src="LINK" controls="controls" style="max-width: 730px;" />
+
 ![](https://github.com/christianjtr/todo-app/assets/13179028/51fc976a-abcf-48a7-b231-7642e74d65f7)
 
 ### Compiles and hot-reloads for development
