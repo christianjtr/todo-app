@@ -44,7 +44,7 @@ git clone https://github.com/christianjtr/todo-app.git
 ```
 ### Demo
 
-![](./assets/demo.mov)
+![](./assets/demo.m4v)
 
 
 ### Compiles and hot-reloads for development
