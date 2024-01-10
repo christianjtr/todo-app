@@ -1,6 +1,6 @@
 import React from "react";
 import { Task } from "../../../types/Task";
-import useTodo from "../../../hooks/useTodo.ts";
+import useTodo from "../../../hooks/useTodo";
 
 interface EditTaskProps {
     formData: Task;

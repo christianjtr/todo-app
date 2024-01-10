@@ -1,5 +1,5 @@
 import React from "react";
-import useTodo from "../../../hooks/useTodo.ts";
+import useTodo from "../../../hooks/useTodo";
 
 const AddTaskForm: React.FC = (): React.ReactElement => {
     const { addTask } = useTodo();
