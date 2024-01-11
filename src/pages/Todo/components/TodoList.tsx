@@ -1,6 +1,6 @@
 import React from "react";
 import TaskItem from "./TaskItem";
-import useTodo from "../../../hooks/useTodo.ts";
+import useTodo from "../../../hooks/useTodo";
 import NotFoundStateImage from "../../../assets/not-found.jpg";
 
 const TodoList: React.FC = (): React.ReactElement => {

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import EditTaskForm from "./EditTaskForm.tsx";
+import EditTaskForm from "./EditTaskForm";
 import { Task } from "../../../types/Task";
-import useTodo from "../../../hooks/useTodo.ts";
+import useTodo from "../../../hooks/useTodo";
 
 interface TaskItemInterface {
     task: Task;
