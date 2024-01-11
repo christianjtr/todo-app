@@ -46,6 +46,13 @@ git clone https://github.com/christianjtr/todo-app.git
 
 https://github.com/christianjtr/todo-app/assets/13179028/51fc976a-abcf-48a7-b231-7642e74d65f7
 
+### Live Demo
+
+Click on the following link (GitHub page project):
+
+https://christianjtr.github.io/todo-app
+
+
 ### Compiles and hot-reloads for development
 
 ```
