@@ -5,7 +5,7 @@ import AppRoutes from "./routes/AppRoutes";
 
 const App: React.FC = (): React.ReactElement => {
     return (
-        <Router>
+        <Router basename="/todo-app">
             <AppRoutes />
         </Router>
     );
