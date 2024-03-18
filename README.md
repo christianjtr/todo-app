@@ -2,7 +2,7 @@
 
 It's just a proof of concept.
 
-> :bulb: Feel free to add any improvement/sugesstion you consider.
+> :bulb: Feel free to add any improvement/suggestion you consider.
 
 ### Comments
 
